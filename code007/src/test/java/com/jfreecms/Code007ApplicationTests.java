@@ -1,4 +1,4 @@
-package com.jfreecms.entity;
+package com.jfreecms;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
