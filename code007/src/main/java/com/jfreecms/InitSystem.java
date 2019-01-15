@@ -18,6 +18,10 @@ import java.util.List;
  * @Date: 2019/1/15 0015 9:07
  * @Author: Mr.Deng
  * @Description:初始化分类信息加载到主页
+ * 通过ApplicationContextAware获取spring上下文的类
+ * ServletContextListener 接口，它能够监听 ServletContext 对象的生命周期，实际上就是监听 Web 应用的生命周期。
+ *
+ * 当Servlet 容器启动或终止Web 应用时，会触发ServletContextEvent 事件，该事件由ServletContextListener 来处理。
  */
 @Component("initSystem")
 public class InitSystem implements ServletContextListener,ApplicationContextAware{
