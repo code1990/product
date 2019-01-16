@@ -11,7 +11,7 @@ import com.jfreecms.entity.ArcType;
  * @Author: Mr.Deng
  * @Description: 分类属性请求dao接口
  */
-public interface ArcTypeRespository extends JpaRepository<ArcType,Integer>,JpaSpecificationExecutor<ArcType> {
+public interface ArcTypeRepository extends JpaRepository<ArcType,Integer>,JpaSpecificationExecutor<ArcType> {
 
 
 }

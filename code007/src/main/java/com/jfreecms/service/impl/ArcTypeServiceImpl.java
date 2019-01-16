@@ -1,15 +1,14 @@
 package com.jfreecms.service.impl;
 
-import java.util.List;
-
+import com.jfreecms.entity.ArcType;
+import com.jfreecms.respository.ArcTypeRepository;
+import com.jfreecms.service.ArcTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
-import com.jfreecms.entity.ArcType;
-import com.jfreecms.respository.ArcTypeRespository;
-import com.jfreecms.service.ArcTypeService;
+import java.util.List;
 
 /**
  * @program: code007
@@ -21,12 +20,12 @@ import com.jfreecms.service.ArcTypeService;
 public class ArcTypeServiceImpl implements ArcTypeService {
 
 	@Autowired
-	private ArcTypeRespository arcTypeRespository;
+	private ArcTypeRepository arcTypeRepository;
 	
 	@Override
 	public List<ArcType> listAll(Direction direction, String... properties) {
 		Sort sort=new Sort(direction, properties);
-		return arcTypeRespository.findAll(sort);
+		return arcTypeRepository.findAll(sort);
 	}
 
 }
