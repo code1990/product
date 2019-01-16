@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -30,13 +31,15 @@ public class IndexController {
     * @description: 网站根目录请求
     */
     @RequestMapping("/")
-    public ModelAndView root(){
+    public ModelAndView root(HttpServletRequest request){
+        request.getSession().setAttribute("tMenu","t_0");
         Article sArticle = new Article();
         /*状态为2表示审核通过*/
         sArticle.setState(2);
         List<Article> indexArticleList = articleService.list(sArticle,1,20, Sort.Direction.DESC,"publishDate");
         Long total=articleService.getTotal(sArticle);
         ModelAndView mav = new ModelAndView();
+        mav.addObject("title", "首页");
         mav.addObject("articleList", indexArticleList);
         mav.addObject("pageCode", PageUtil.genPagination("/article/list", total, 1, 20, ""));
         mav.setViewName("index");

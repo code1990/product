@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @program: code007
@@ -27,6 +29,8 @@ import java.util.List;
 public class InitSystem implements ServletContextListener,ApplicationContextAware{
 
 	private static ApplicationContext applicationContext;
+
+	public static Map<Integer,ArcType> arcTypeMap=new HashMap<Integer,ArcType>();
 	
 	/**
 	 * 加载数据到application缓存中
@@ -35,6 +39,9 @@ public class InitSystem implements ServletContextListener,ApplicationContextAwar
 	public void loadData(ServletContext application){
 		ArcTypeService arcTypeService=(ArcTypeService) applicationContext.getBean("arcTypeService");
 		List<ArcType> allArcTypeList = arcTypeService.listAll(Sort.Direction.ASC, "sort");
+		for(ArcType arcType:allArcTypeList){
+			arcTypeMap.put(arcType.getId(), arcType);
+		}
 		application.setAttribute("allArcTypeList", allArcTypeList);
 	}
 	
